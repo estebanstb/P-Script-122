@@ -17,7 +17,7 @@ Je suis parti sur un petit projet de gestion des différents composants du PC pe
 •	Menu à 5 fonctionnalités.
 •	Voir le statut du processeur.
 •	Voir combien de RAM le PC possède en GiB.
-•	Voir combien d’espace disque il y a en tout et combien il en reste.
+•	Voir combien d’espace disk il y a en tout et combien il en reste.
 •	Voir les utilisateurs locaux.
 •	Voir la version actuelle de Windows.
 
@@ -47,7 +47,7 @@ PS> .\C:\Users\EtmlPowershell\Documents\GitHub\P-Script-122\pcManagement-estlebe
 Menu de sélection :  
 1. Statut du processeur
 2. Combien de RAM
-3. Combien d'espace disque
+3. Combien d'espace disk
 4. Utilisateurs locax
 5. Version de Windows
 0. Sortie
@@ -86,19 +86,19 @@ do {
         2 
         { 
             $ram = Get-WmiObject Win32_ComputerSystem
-            $ramTotal = [math]::Round($ram.TotalPhysicalMemory / 1GB, 2)
-            $ramLibre = [math]::Round($ram.FreePhysicalMemory / 1GB, 2)
-            Write-Host "Quantité totale de RAM : $ramTotal GiB"
-            Write-Host "Quantité de RAM libre : $ramLibre GiB"
+            $totalRAM = [math]::Round($ram.TotalPhysicalMemory / 1GB, 2)
+            $freeRAM = [math]::Round($ram.FreePhysicalMemory / 1GB, 2)
+            Write-Host "Quantité totale de RAM : $totalRAM GiB"
+            Write-Host "Quantité de RAM libre : $freeRAM GiB"
         }
 
         3 
         { 
-            $disque = Get-WmiObject Win32_LogicalDisk -Filter "DriveType = 3"
-            $espaceTotal = [math]::Round($disque.Size / 1GB, 2)
-            $espaceLibre = [math]::Round($disque.FreeSpace / 1GB, 2)
-            Write-Host "Espace disque total : $espaceTotal GiB"
-            Write-Host "Espace disque libre : $espaceLibre GiB"
+            $disk = Get-WmiObject Win32_LogicalDisk -Filter "DriveType = 3"
+            $totalSpace = [math]::Round($disk.Size / 1GB, 2)
+            $freeSpace = [math]::Round($disk.FreeSpace / 1GB, 2)
+            Write-Host "Espace disque total : $totalSpace GiB"
+            Write-Host "Espace disque libre : $freeSpace GiB"
         }
         4 
         { 
