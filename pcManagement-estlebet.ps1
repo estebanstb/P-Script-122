@@ -42,9 +42,17 @@ PS> extension -name "File" -extension "doc"
 File.doc
  
 .EXAMPLE
-PS> extension "File" "doc"
-File.doc
- 
+PS> .\C:\Users\EtmlPowershell\Documents\GitHub\P-Script-122\pcManagement-estlebet.ps1
+
+Menu de sélection :  
+1. Statut du processeur
+2. Combien de RAM
+3. Combien d'espace disque
+4. Utilisateurs locax
+5. Version de Windows
+0. Sortie
+Veuillez saisir un numéro entre 0 et 5 : ......
+
 .LINK
 -
 
@@ -72,32 +80,34 @@ do {
     switch ($choix) {
         1 
         { 
-            Get-CimInstance win32_processor ; break
+            Get-WmiObject Win32_Processor | Format-Table Name, LoadPercentage, MaxClockSpeed -AutoSize
         }
 
         2 
         { 
-            $ram = Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object -Property TotalPhysicalMemory / 1GB
-            
-            $ram 
-            break
+            $ram = Get-WmiObject Win32_ComputerSystem
+            $ramTotal = [math]::Round($ram.TotalPhysicalMemory / 1GB, 2)
+            $ramLibre = [math]::Round($ram.FreePhysicalMemory / 1GB, 2)
+            Write-Host "Quantité totale de RAM : $ramTotal GiB"
+            Write-Host "Quantité de RAM libre : $ramLibre GiB"
         }
 
         3 
         { 
-            Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3" |
-            Measure-Object -Property FreeSpace,Size -Sum |
-            Select-Object -Property Property,Sum
-            break
+            $disque = Get-WmiObject Win32_LogicalDisk -Filter "DriveType = 3"
+            $espaceTotal = [math]::Round($disque.Size / 1GB, 2)
+            $espaceLibre = [math]::Round($disque.FreeSpace / 1GB, 2)
+            Write-Host "Espace disque total : $espaceTotal GiB"
+            Write-Host "Espace disque libre : $espaceLibre GiB"
         }
         4 
         { 
-            Write-Host "Vous avez choisi l'option 4" ; break 
+            Get-WmiObject Win32_UserAccount | Where-Object { $_.LocalAccount -eq $true } | Format-Table Name, Caption -AutoSize
         }
 
         5 
         { 
-            Write-Host "Vous avez choisi l'option 5" ; break 
+            Get-WmiObject Win32_OperatingSystem | Format-Table Caption, Version -AutoSize        
         }
 
         0 { Write-Host "Sortie du programme" ; break }
