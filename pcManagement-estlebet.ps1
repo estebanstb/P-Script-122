@@ -74,10 +74,10 @@ do {
     mainMenu
 
     # Lui demander son choix
-    $choix = Read-Host "Veuillez saisir un numéro entre 0 et 5"
+    $choice = Read-Host "Veuillez saisir un numéro entre 0 et 5"
 
     # Si il a entré un chiffre entre 0 et 5 faire ce qu'il y a faire dans l'énoncé des choix
-    switch ($choix) {
+    switch ($choice) {
         1 
         { 
             Get-WmiObject Win32_Processor | Format-Table Name, LoadPercentage, MaxClockSpeed -AutoSize
@@ -112,9 +112,9 @@ do {
 
         0 { Write-Host "Sortie du programme" ; break }
         
-        default { Write-Host "Choix non valide. Veuillez réessayer." } 
+        default { Write-Host "choice non valide. Veuillez réessayer." } 
     }
     # Pause pour permettre à l'utilisateur de voir le résultat avant de revenir au menu
     Read-Host "Appuyez sur Entrée pour continuer"
 
-} while ($choix -ne 0)
+} while ($choice -ne 0)
