@@ -5,7 +5,7 @@ I did this project as part of my formation. The project needed to be made in 3 w
 1 period = 45 minutes, which makes it 2 hours and 15 minutes per week.
 
 This project is linked to the PowerShell module of my formation, so my teacher asked me to create a technical specification document, submit it to him, if he thinks that the work is not too simple he'll valiate it and sign it for me to start working on it.
-
+I went for a PC management project that i can launch to a PC connected on the same network.
 
 ## Images
 Project not yet finished.
