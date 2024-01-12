@@ -117,7 +117,7 @@ do {
         default { Write-Host "Choix non valide. Veuillez reessayer." } 
     }
     # Pause pour permettre à l'utilisateur de voir le resultat avant de revenir au menu
-    Read-Host "Appuyez sur Entree pour continuer"
+    Read-Host "`nAppuyez sur Entree pour continuer"
 
 } while ($choice -ne 0)
 
