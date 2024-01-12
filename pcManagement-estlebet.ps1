@@ -64,39 +64,55 @@ do {
 
     # Si il a entre un chiffre entre 0 et 5 faire ce qu'il y a faire dans l'enonce des choix
     switch ($choice) {
-        1 
+        1 # Statut du processeur
         { 
             Get-WmiObject Win32_Processor | Format-Table Name, LoadPercentage, MaxClockSpeed -AutoSize
         }
 
-        2 
+        2 # Combien de RAM
         { 
+            # Variable qui cree un raccourci à partir d'une commande PS pour aller chercher la ram
             $ram = Get-WmiObject Win32_ComputerSystem
+            
+            # Variable faisant le calcul pour obtenir la ram total en GB
             $totalRAM = [math]::Round($ram.TotalPhysicalMemory / 1GB, 2)
+            
+            # Variable faisant le calcul pour obtenir la ram libre en GB
             $freeRAM = [math]::Round($ram.FreePhysicalMemory / 1GB, 2)
             Write-Host "Quantite totale de RAM : $totalRAM GiB"
             Write-Host "Quantite de RAM libre : $freeRAM GiB"
         }
 
-        3 
+        3 # Combien d'espace disque
         { 
+            # Variable qui cree un raccourci à partir d'une commande PS pour aller chercher le disque de stockage
             $disk = Get-WmiObject Win32_LogicalDisk -Filter "DriveType = 3"
+            
+            # Variable faisant le calcul pour obtenir l'espace disque total en GB
             $totalSpace = [math]::Round($disk.Size / 1GB, 2)
+            
+            # Variable faisant le calcul pour obtenir l'espace disque libre en GB
             $freeSpace = [math]::Round($disk.FreeSpace / 1GB, 2)
             Write-Host "Espace disque total : $totalSpace GiB"
             Write-Host "Espace disque libre : $freeSpace GiB"
         }
-        4 
+        
+        4 # Utilisateurs locaux
         { 
+            # Commande PS allant chercher les utilisateurs présents sur la machine
             Get-WmiObject Win32_UserAccount | Where-Object { $_.LocalAccount -eq $true } | Format-Table Name, Caption -AutoSize
         }
 
-        5 
+        5 # Version de Windows
         { 
+            # Commande PS allant cherche la version de Windows de la machine
             Get-WmiObject Win32_OperatingSystem | Format-Table Caption, Version -AutoSize        
         }
-
-        0 { Write-Host "Sortie du programme" ; break }
+        
+        0 
+        { 
+            Write-Host "Sortie du programme" ; break 
+        }
         
         default { Write-Host "Choix non valide. Veuillez reessayer." } 
     }
