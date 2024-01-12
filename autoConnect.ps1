@@ -32,7 +32,7 @@ Entrez le chemin complet du fichier PowerShell que vous voulez executer : C:\Use
 #>
 
 # Nom du PC sur lequel on va executer le programme
-$pcChoice = Read-Host "Entrez le nom du PC sur lequel vous voulez vous connecter (Entrer nom exact). "
+$pcChoice = Read-Host "`nEntrez le nom du PC sur lequel vous voulez vous connecter (Entrer nom exact). "
 
 # Chemin complet du programme à lancer
 $filePath = Read-Host "`nEntrez le chemin complet du fichier PowerShell que vous voulez executer (Sur ce PC). "

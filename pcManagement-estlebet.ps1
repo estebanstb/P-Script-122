@@ -60,7 +60,7 @@ do {
     mainMenu
 
     # Lui demander son choix
-    $choice = Read-Host "Veuillez saisir un numero entre 0 et 5"
+    $choice = Read-Host "`nVeuillez saisir un numero entre 0 et 5"
 
     # Si il a entre un chiffre entre 0 et 5 faire ce qu'il y a faire dans l'enonce des choix
     switch ($choice) {
