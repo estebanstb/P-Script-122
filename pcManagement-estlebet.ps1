@@ -8,25 +8,20 @@ Date de creation 	: 15.12.2023
 Lieu 				: ETML, Sebeillion
 
 .SYNOPSIS
-Gestion de PC en connectes sur la même infrastructure
+Gestion de PC connectes sur la même infrastructure reseau
 
 .DESCRIPTION
 Ce projet nous demande de creer notre propre cahier des charges sur un projet en PowerShell qu’on choisit.
 Je suis parti sur un petit projet de gestion des differents composants du PC permettant de voir les composants d’ordinateurs connectes au reseau.
 
 •	Menu à 5 fonctionnalites.
+
 •	Voir le statut du processeur.
 •	Voir combien de RAM le PC possède en GiB.
 •	Voir combien d’espace disk il y a en tout et combien il en reste.
 •	Voir les utilisateurs locaux.
 •	Voir la version actuelle de Windows.
 
-.PARAMETER Name
-Specifies the file name.
- 
-.PARAMETER Extension
-Specifies the extension. "Txt" is the default.
- 
 .INPUTS
 -
  
@@ -34,24 +29,16 @@ Specifies the extension. "Txt" is the default.
 -
  
 .EXAMPLE
-PS> extension -name "File"
-File.txt
- 
-.EXAMPLE
-PS> extension -name "File" -extension "doc"
-File.doc
- 
-.EXAMPLE
 PS> .\C:\Users\EtmlPowershell\Documents\GitHub\P-Script-122\pcManagement-estlebet.ps1
 
 Menu de selection :  
 1. Statut du processeur
 2. Combien de RAM
-3. Combien d'espace disk
-4. Utilisateurs locax
+3. Combien d'espace disque
+4. Utilisateurs locaux
 5. Version de Windows
 0. Sortie
-Veuillez saisir un numero entre 0 et 5 : ......
+Veuillez saisir un numero entre 0 et 5 : ...
 
 .LINK
 -
@@ -73,10 +60,10 @@ do {
     mainMenu
 
     # Lui demander son choix
-    $choix = Read-Host "Veuillez saisir un numero entre 0 et 5"
+    $choice = Read-Host "Veuillez saisir un numero entre 0 et 5"
 
     # Si il a entre un chiffre entre 0 et 5 faire ce qu'il y a faire dans l'enonce des choix
-    switch ($choix) {
+    switch ($choice) {
         1 
         { 
             Get-WmiObject Win32_Processor | Format-Table Name, LoadPercentage, MaxClockSpeed -AutoSize
@@ -116,5 +103,5 @@ do {
     # Pause pour permettre à l'utilisateur de voir le resultat avant de revenir au menu
     Read-Host "Appuyez sur Entree pour continuer"
 
-} while ($choix -ne 0)
+} while ($choice -ne 0)
 
