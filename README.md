@@ -8,7 +8,10 @@ This project is linked to the PowerShell module of my formation, so my teacher a
 I went for a PC management project that i can launch to a PC connected on the same network.
 
 ## Images
-![](https://github.com/estebanstb/P-Script-122/blob/main/screenshots/waitingMenu.png | width=100)
+Menu when you launch ***pcManagement-estlebet.ps1***
+
+<img src="https://github.com/estebanstb/P-Script-122/blob/main/screenshots/waitingMenu.png" width=500>
 
 ## How to use the project
 First, you will need to configurate two Virtual Machine and link them using a local network.
+
