@@ -11,4 +11,4 @@ I went for a PC management project that i can launch to a PC connected on the sa
 Project not yet finished.
 
 ## How to use the project
-Project not yet finished.
+First, you will need to configurate two Virtual Machine and link them using a local network.
